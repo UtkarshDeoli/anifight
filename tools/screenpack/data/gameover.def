@@ -1,0 +1,46 @@
+; Anifight's Game Over storyboard.
+;
+; Original text and timing. The animation is the screenpack's own wordmark
+; (system.sff, group 10 image 0), so this file carries no art of its own and
+; a screenpack that replaces system.sff still has a coherent Game Over.
+;
+; `[Game Over Screen]` in system.def is the switch that reaches this file.
+; Everything below is standard MUGEN storyboard syntax.
+
+[Info]
+localcoord = 320,240
+
+[SceneDef]
+spr = system.sff
+font0 = f-12x18.fnt
+startscene = 0
+
+[Scene 0]
+fadein.time = 30
+fadeout.time = 30
+fadeout.col = 0,0,0
+; A cold blue-black backdrop, distinct from the title's plain black.
+clearcolor = 8,10,20
+; Everything is centred.
+layerall.pos = 160,120
+; The wordmark drops in once the fade has mostly lifted.
+layer0.anim = 0
+layer0.starttime = 24
+; "GAME OVER", then the line beneath it typed out letter by letter.
+layer1.text = "GAME OVER"
+layer1.font = 0,0,0, 225,70,70
+layer1.offset = 0,60
+layer1.starttime = 46
+layer2.text = "TRY AGAIN"
+layer2.font = 0,0,0, 190,200,225
+layer2.offset = 0,84
+layer2.starttime = 80
+layer2.textdelay = 3
+end.time = 220
+
+; The wordmark settles from a small drop rather than simply appearing.
+[Begin Action 0]
+10,0, 0,-10, 3
+10,0, 0,-6, 3
+10,0, 0,-2, 3
+10,0, 0,0, -1

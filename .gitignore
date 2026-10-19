@@ -1,0 +1,53 @@
+# Gradle / Android
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# NDK / native
+obj/
+*.o
+*.so
+
+# macOS
+.DS_Store
+
+# Agent tooling and local IDE state
+.agents/
+.claude/
+.kotlin/
+skills-lock.json
+
+# Python bytecode from the generators
+__pycache__/
+*.pyc
+
+# Generated screenpack artefacts are build outputs, not sources.
+# (tools/screenpack/gen.py rebuilds them deterministically.)
+tools/screenpack/data/*.sff
+tools/screenpack/data/*.fnt
+tools/screenpack/data/fightfx.air
+
+# Community characters are personal-use files, not sources. Obtain them
+# yourself, keep them here, never commit them.
+local_chars/
+
+# Characters too large to fit in an APK the phone can install (Naruto1 is 1.4 GB
+# of sprites). Kept on disk so they can be moved back when that is worth it.
+local_chars_oversize/
+
+# MUGEN's own data folder, if you have one. Same reasoning: Elecbyte's assets are
+# copyrighted and are not redistributed here. Drop `fight.snd`/`common.snd`/`system.snd`
+# in here and the build uses them for the screenpack's sounds.
+local_sounds/
+
+# MUGEN's own stages, from the same supplied folder. Third-party art, kept out of
+# the tree like the characters and the sounds.
+local_stages/
+
+# The player's own MUGEN folder itself, while it is being read from.
+local_mugen/

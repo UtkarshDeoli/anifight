@@ -1,0 +1,194 @@
+; Anifight -- character and stage selection list.
+;
+; There are no generated characters. Every entry below is a community
+; character that you obtain yourself into local_chars/ (gitignored); the line
+; here reserves its cell, and the folder makes it playable. docs/COMMUNITY.md
+; is the list and the instructions.
+;
+; To add a character, drop its folder into local_chars/ and add a line here.
+; Nothing else needs to change:
+;
+;     [Characters]
+;     kfm/kfm.def
+;
+; The format is:
+;
+;     charname, stage1, stage2, ...
+;
+; where an entry may also be `randomselect` (a random-character cell), and
+; optional parameters may follow, e.g. `music = song.mp3`, `hidden = 1`.
+; A second def inside a character's folder is selected with a slash:
+;
+;     kfm/alt-kfm.def, stages/training.def
+
+[Characters]
+; ---------------------------------------------------------------------------
+; Kung Fu Man, and why he is still here.
+;
+; He is Elecbyte's own reference character and the only one a stock MUGEN
+; install is guaranteed to have. This game measures every other fighter against
+; him as well: his standing art is the height the whole roster is normalised to
+; (see `kReferenceStandingHeight` in engine/fighter.cpp), so a roster without
+; him has nothing to be the size *of*.
+kfm/kfm.def
+
+; ---------------------------------------------------------------------------
+; Dragon Ball.
+;
+; The roster is Dragon Ball and nothing else, which is a decision about the
+; fight rather than about taste: these are edits of edits, published by
+; different authors over twenty years, and their art arrives at every scale from
+; 70 pixels to 200 for the same declared height. Left alone, the biggest of them
+; is half again the size of the smallest and reaches half again as far, and the
+; two are not a match. Normalising the art brings them to one size, and keeping
+; the roster to one series keeps the *look* consistent too -- a 1998 hand-drawn
+; sprite and a 2015 redrawn one sitting in the same match read as a bug even
+; when they are the same height.
+;
+; All thirteen come from Mugen Free For All's Dragon Ball series thread --
+; https://mugenfreeforall.com/topic/51078-dragon-ball-series-part-1/ -- which
+; indexes them by the author of each edit. Every entry names a folder in
+; local_chars/; the author is recorded here because these are edits of edits and
+; the thread is the only place that says whose is whose.
+;
+; The def files were renamed from whatever the archive called them (several
+; carried spaces and accented characters) so that folder, line and file all read
+; the same. Nothing inside a def depends on its own filename.
+;
+; Three of these are separate Vegettos rather than one character with three
+; forms, because that is how they were published: they have unrelated sprites,
+; animations and movesets and no code in common.
+dbz_goku/dbz_goku.def              ; SSJ Goku -- SSJTrunks
+dbz_gohan/dbz_gohan.def            ; P-Gohan ssj2 -- Barrado
+dbz_vegeta/dbz_vegeta.def          ; Vegeta (base) -- HiddenSage121
+dbz_gogeta/dbz_gogeta.def          ; Gogeta -- Supermystery
+dbz_piccolo/dbz_piccolo.def        ; Piccolo -- Ssonic
+dbz_gogeta_ssj4/dbz_gogeta_ssj4.def      ; Xeno Gogeta SSJ4 -- Orochi Shin
+dbz_vegeta_ssj4/dbz_vegeta_ssj4.def      ; Vegeta SSJ4 -- Ryon, edited by Kenjiro44
+dbz_vegeta_bal/dbz_vegeta_bal.def        ; Balance SSJ4Vegeta -- Linkgamer2004
+dbz_vegeta_ssg/dbz_vegeta_ssg.def        ; Vegeta SSG -- Sustina, edited by GOD984
+dbz_vegetto/dbz_vegetto.def              ; Vegetto, transforming -- ThiaggoAssis
+dbz_vegetto_ssj/dbz_vegetto_ssj.def      ; Super Vegetto SSJ -- Mr. 4x3l
+dbz_vegetto_ssb/dbz_vegetto_ssb.def      ; Vegetto -- Adoriendson Tenorio
+dbz_yamcha/dbz_yamcha.def                ; Yamcha -- Mr. 4x3l
+
+; ---------------------------------------------------------------------------
+; What used to fill the rest of the grid, and why it does not any more.
+;
+; Twenty-one entries used to sit below these: ronald, peter, homer, naruto,
+; mario, sonic, chuck, rareakuma, omegatomhanks, evilryu, evilken, dio, donald,
+; hulk, batman, deadpool, scorpion, kratos, godzilla and masterhand, plus a
+; second goku. None of their folders is obtainable from a free-to-use source,
+; so all twenty-one loaded as empty cells -- a grid two thirds black boxes, and
+; a cursor that had to be told to step over them. They reserved cells for
+; characters that were never going to arrive.
+;
+; Five more followed: Giorno, Kira, jolyne_asb, mista and s_diavolo, from
+; amarimono's MUGEN work (https://github.com/amarimono-mugen/products). Those
+; did load. They were dropped for being the wrong series rather than for being
+; wrong -- a roster is a set of fighters that look like they belong in the same
+; game, and JoJo stands next to Dragon Ball the way a photograph stands next to
+; a drawing.
+;
+; The grid is still four rows of ten. Room is the point: the thread above is
+; "part 1", so more Dragon Ball fighters are expected, and a grid that grows
+; into empty cells at the end costs nothing -- the cursor steps over them
+; (`moveoveremptyboxes = 0`) and the select screen does not draw a plate for a
+; cell with nothing in it.
+
+; Extra stages are available in VS and Watch modes.
+; The pool a match falls back to when the chosen fighter names no stage of
+; its own. Order matters: the first that loads is the default arena.
+; ---------------------------------------------------------------------------
+; The MUGEN install's roster.
+;
+; These arrived with the MUGEN 1.0 folder in the player's own Downloads: twenty-
+; seven characters, each with the .snd file it was written for, so their voices
+; and effects are their authors' rather than anything synthesised here. They are
+; in local_chars/ (gitignored, like everything third-party) and nothing about
+; them was changed to make them load -- they are read the way MUGEN reads them.
+;
+; Five of them still trip the AI test's freeze check, all for the reason noted
+; under Helper in docs/COMMUNITY.md; they load and fight, and their own AI can
+; loop when it is pressed point-blank for long enough.
+mugen_black/Black.def   ; Goku Black -- Mikel8888 (142 MB)
+
+mugen_evil_goku/Evil Goku.def   ; Goku -- Gohvu (95 MB)
+
+mugen_g6_kakashi_kid/G6_Kakashi_Kid.def   ; Kakashi Kid -- CobraG6 (41 MB)
+
+mugen_g6_naruto_sennin/G6_Naruto_Sennin.def   ; Uzumaki Naruto Sennin -- CobraG6 (53 MB)
+
+mugen_genos/Genos.def   ; Genos -- BlackJudai (36 MB)
+
+mugen_hinata/Hinata.def   ; Hinata -- Monkey_D._Yomi (9 MB)
+
+mugen_izuku_midoriya/Izuku Midoriya.def   ; Izuku Midoriya (Deku) -- Rivelio, Edit TrafalgarLawzz (58 MB)
+
+mugen_levi/Levi.def   ; Levi -- Mikel8888 (42 MB)
+
+mugen_madara_rikudou/Madara_Rikudou.def   ; Uchiha Madara -- Mikel8888 (26 MB)
+
+mugen_meliodas/Meliodas.def   ; Meliodas -- Mikel8888 (29 MB)
+
+mugen_minato/Minato.def   ; Minato -- Midoriya707 (Edited by InSeph) (25 MB)
+
+mugen_naruto/Naruto.def   ; Uzumaki Naruto -- Mikel8888 (62 MB)
+
+mugen_naruto_ashura_jus/Naruto_Ashura_JUS.def   ; Naruto -- Mikel8888 (55 MB)
+
+mugen_naruto_sennin_jus/Naruto_Sennin_JUS.def   ; Naruto -- Mikel8888 (39 MB)
+
+mugen_sai/Sai.def   ; Sai -- Salah (21 MB)
+
+mugen_saitama/Saitama.def   ; Saitama -- Salah (70 MB)
+
+mugen_sasuke_hebi_white/Sasuke_Hebi_White.def   ; Sasuke -- Mikel8888 (27 MB)
+
+mugen_shisui/Shisui.def   ; Uchiha Shisui -- Salah (49 MB)
+
+mugen_tanjiro/Tanjiro.def   ; Tanjiro -- Entah99 (28 MB)
+
+mugen_tanjiro_by_santoryu/Tanjiro By Santoryu.def   ; Tanjiro By Santoryu -- SantoryuMUGENJUS (56 MB)
+
+mugen_teen_gohan/Teen Gohan.def   ; Gohan SSJ 2 -- HaVoC & NeOcIdE (9 MB)
+
+mugen_zamasu/Zamasu.def   ; Zamasu -- Knightmare (39 MB)
+
+[ExtraStages]
+stages/training.def
+stages/rooftop.def
+
+; The MUGEN install's stages, in local_stages/ (gitignored), overlaid into the
+; build's stages/ folder. Each is a .def naming the .sff beside it, exactly as it
+; shipped -- including the ones whose filenames carry apostrophes and brackets,
+; because a MUGEN stage's name is the author's and nothing here renames them.
+stages/AP_Playground.def
+stages/AP_Witch's_Ruins.def
+stages/AquaPazza[RedMoon].def
+stages/Chamber_of_Souls.def
+stages/Konoha_Destroyed.def
+stages/XX'DB'BRIDGE'RUINS'XX.def
+stages/XX'DB'CITY'RUINS'XX.def
+stages/XX'DB'MILITARY'BASE'XX.def
+stages/XX'DB'NATURE'PRESERVE'XX.def
+stages/kfm.def
+stages/namek.def
+stages/roof.def
+stages/ruins.def
+stages/stage0-720.def
+stages/stage0.def
+
+[Options]
+; One value per difficulty tier, read in order: 6 fights against the easiest
+; opponents, then 1 against the next tier up, then 1 more. So an arcade run is
+; eight fights long and steps up twice near the end. Raise the later values for
+; a steeper ladder -- the tiers are 0 (gentlest) to 9.
+;
+; A run repeats the pool when it is shorter than the ladder, which is what a
+; fourteen-fighter roster and an eight-fight run already do twice over.
+arcade.maxmatches = 6,1,1,0,0,0,0,0,0,0
+
+; The same shape for team modes. Read and reported, but nothing consumes it yet:
+; team battles are not implemented.
+team.maxmatches = 4,1,1,0,0,0,0,0,0,0

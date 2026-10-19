@@ -1,0 +1,86 @@
+FUNC 00443dd0  size=0xae  params_seed=00443dd0  decompiled=false
+FUNC 00443b80  size=0xa6  params_seed=00443b80  decompiled=false
+FUNC 00443d80  size=0x1  params_seed=00443d80  decompiled=false
+FUNC 00482b00  size=0x2cda  params_seed=00482b9e  decompiled=false
+FUNC 0044eef0  size=0x57a  params_seed=0044f213  decompiled=false
+FUNC 00451c20  size=0x25ea  params_seed=00451c20  decompiled=false
+FUNC 00454230  size=0xe2  params_seed=00454230  decompiled=false
+FUNC 00473ed0  size=0x3c4e  params_seed=0047401e  decompiled=false
+FUNC 0047d820  size=0x13b  params_seed=0047d865  decompiled=false
+FUNC 0047da40  size=0x174b  params_seed=0047e2c8  decompiled=false
+FUNC 004824b0  size=0x16c  params_seed=004824b4  decompiled=false
+FUNC 00481ec0  size=0x4d3  params_seed=00482000  decompiled=false
+FUNC 004861e0  size=0x5d9  params_seed=0048883e  decompiled=false
+FUNC 0048a900  size=0x1ee  params_seed=0048a900  decompiled=false
+FUNC 0048ab00  size=0x1b3  params_seed=0048ab00  decompiled=false
+FUNC 0048b5f0  size=0x441  params_seed=0048b5f0  decompiled=false
+FUNC 00477c80  size=0x549  params_seed=00477ce5  decompiled=false
+FUNC 0x473ed0 size=0x3cd2 controller_dispatch -> angr_00473ed0_controller_dispatch.c (556078 chars)
+FUNC 0x47d820 size=0x13b hitdef_attr_reader -> angr_0047d820_hitdef_attr_reader.c (2028 chars)
+FUNC 0x47da40 size=0x1868 hitdef_schema_parse -> angr_0047da40_hitdef_schema_parse.c (37421 chars)
+FUNC 0x4824b0 size=0x16c superpause_params -> angr_004824b0_superpause_params.c (1863 chars)
+FUNC 0x481ec0 size=0x4d3 helper_params -> angr_00481ec0_helper_params.c (4369 chars)
+FUNC 0x482b00 size=0x2ec5 expression_eval -> angr_00482b00_expression_eval.c (273626 chars)
+FUNC 0x44eef0 size=0x57a frame_executor -> angr_0044eef0_frame_executor.c (7372 chars)
+FUNC 0x451c20 size=0x25ea param_reader -> angr_00451c20_param_reader.c (55766 chars)
+FUNC 0x4861e0 size=0x2672 trigger_compile_a -> angr_004861e0_trigger_compile_a.c (56266 chars)
+FUNC 0x48a900 size=0x1ee cns_statedef_scan -> angr_0048a900_cns_statedef_scan.c (4111 chars)
+FUNC 0x48ab00 size=0x1b3 cns_section_attach -> angr_0048ab00_cns_section_attach.c (4198 chars)
+FUNC 0x48b5f0 size=0x441 cns_ctrl_validator -> angr_0048b5f0_cns_ctrl_validator.c (9035 chars)
+FUNC 0x477c80 size=0x549 trigger_line_reader -> angr_00477c80_trigger_line_reader.c (13379 chars)
+FUNC 0x454230 size=0xe2 unknown_454230 -> angr_00454230_unknown_454230.c (1237 chars)
+FUNC 0x47cdb0 palfx_param_reader -> angr_0047cdb0_at_0047cdb0.c (palFX param reader; time/color/add/mul/sinadd/invertall)
+FUNC 0x47d050 palfx_slot_write -> angr_0047d050_at_0047d050.c (record->slot; scope 1=eng+10E14, 2=eng+10E50, else player+1438)
+FUNC 0x47d260 palfx_record_cleanup -> angr_0047d260_at_0047d260.c
+FUNC 0x472470 palfx_apply_age -> angr_00472470_at_00472470.c (per-frame hold/reset + age tick)
+FUNC 0x472020 palfx_apply_add -> angr_00472020_at_00472020.c
+FUNC 0x472100 palfx_apply_mul -> angr_00472100_at_00472100.c (0x100 = identity)
+FUNC 0x472200 palfx_apply_invertall -> angr_00472200_at_00472200.c (toggles drawobj+0x2C)
+FUNC 0x4722d0 palfx_apply_color -> angr_004722d0_at_004722d0.c
+FUNC 0x4723a0 palfx_identity_reset -> angr_004723a0_at_004723a0.c
+FUNC 0x414320 pixel_blit_palfx -> angr_00414320_at_00414320.c (per-pixel color/invert/add/mul, 8-bit)
+FUNC 0x4142c0 pixel_pack16 -> angr_004142c0_at_004142c0.c
+FUNC 0x413ac0 draw_dispatch -> angr_00413ac0_at_00413ac0.c
+FUNC 0x4782a0 palfx_executor_a -> angr_004782a0_at_0047a889.c
+FUNC 0x47f380 hitdef_fill -> angr_0047f380_at_00480308.c (HitDef active-block filler: reads parsed template a0 -> writes player+0x11B0 500-byte block a1 [pass 11]. NOT a palfx executor; pass-6 "palfx_executor_b" guess wrong. `a0` is the template as 32-bit words, so `a0[N]` == the parser's byte `4*N`. Pass 12/17: the WRITER of the implicit `forcestand` default at active +0xB4 -- `if (ground.velocity.y != 0.0f && !a0[101]) a1->field_b4 = 1;` at :385-388, where a0[101] == template byte 404 == the "the file wrote `forcestand`" flag the schema parser sets at :565-572. +0xB4 is `forcestand`, not a launch flag. ground.velocity x/y land at active +0x130/+0x134 with the y duplicated at +0x138)
+FUNC 0x476a0d pal_ctrl_dispatch -> angr_00476a0d_at_00476d25.c (palfx/bgpalfx/allpalfx/remappal name dispatch)
+FUNC 0x47da40 hitdef_parse_dump2 -> angr_0047da40_at_0047e6e7.c (down.*/airguard.*/p2getp1state)
+FUNC 0x499676 memset_thunk -> angr_00499676_at_00499676.c
+FUNC 0x499690 ftol -> angr_00499690_at_00499690.c
+FUNC 0x47b370 unknown_47b370 -> angr_0047b370_at_0047b43c.c
+FUNC 0x47da40 hitdef_parse_dump -> angr_0047da40_at_0047f1de.c (the HitDef schema parser; byte-addressed template `a1`, so a parameter's word index in the filler's `a0[]` is its byte offset / 4. Pass 17 offsets: hitflag 284 [default `|= 62`], guardflag 280, forcestand 380 + its written flag at 404, forcenofall 392, fall 540 [registered as air.fall's default], air.fall 776, ground.hittime 696, ground.slidetime 708, ground.velocity 720, animtype 376, air.animtype 760, fall.animtype 424, guard.velocity 884, guard.hittime 896, guard.slidetime 908, guard.ctrltime 920, guard.dist 932. Pass 17 defaults: guard.slidetime<-ground.slidetime, guard.hittime<-ground.hittime, guard.velocity<-ground.velocity, guard.ctrltime<-guard.slidetime, air.animtype<-animtype, fall.animtype<-air.animtype when it is Up/DiagUp else Back)
+# --- pass 9 (p2stateno placement / pause+slowmo flags / palfx scope match) ---
+FUNC 0x46d2d0 hitresolve -> angr_p9_hitresolve.c (state-placement chain: hitdefBlock+0x84/+0x8C/+0x88 = 0x46D8FC-0x46D97D; ChangeState=0x46AF10; sub_48BB50 owner record; 15-dword palfx copy into victim+0x1438)
+FUNC 0x46db20 hitapply -> angr_p9_hitapply.c (victim setup: states 5000/5010/5020/5070/5080, victim+0x107C=hitdef+0x13C, 0x13C==3 -> 5070. The victim's fall latch +0x10C8 and animtype +0x1078 are settled twice, once per branch: the prelude at :261-279 (`fall`/v10 set it, `forcenofall` +0xB8 clears it, ELSE WRITES NOTHING and the victim's value survives; then animtype +0xB0 vs fall.animtype +0xC4), and the air branch at :452-457, which sets it again on `air.fall` (+0x148, never clears) and picks air.animtype +0x140 vs fall.animtype. Pass 12/17: +0xB4 is `forcestand`, not a launch flag -- the READER is the standing/crouching branch at :287-288, `if (hitdef->field_b4 || v10) victim->field_e58 = 1;` before `v12->field_c4c = (0 < v12->field_e58 - 1 ? 5010 : 5000);`; the launch velocity used there is ground.velocity's own pair (+0x130/+0x134), not air.velocity's)
+FUNC 0x46e7c0 guard_clocks -> (raw disasm only so far; pass 18: the block-reaction path
+  whose callers write the BLOCKER's four clocks from the active HitDef -- victim +0x1090
+  (shake) <- active +0x180 = guard.pausetime's second value, +0x1094 (hittime) <- +0x170,
+  +0x1098 (slidetime) <- +0x174, +0x109C (ctrltime) <- +0x178 / airguard.p2ctrltime; an air
+  block writes only the ctrl clock, so its hittime/slidetime stay the previous hit's.
+  Pass 18 landed the engine side of this (hittime vs ctrltime separated, guard.hittime
+  default <- ground.hittime, 150/152/154 onto builtinExitsOnShake).
+  ANSWERED (2026-10-19, GUARD-CHAIN-RE.md; FINDINGS pass 19): the per-tick update at
+  0x46B440 holds exactly two decrements -- +0x1090 at 0x46B732 (movetype == H branch,
+  if > 0) and +0x1094 at 0x46C1B1 (common path, if >= 0 AND +0x1090 == 0). +0x1098 and
+  +0x109C have NO decrement anywhere; they are constants read against Time by common1.cns.
+  The engine also force-clears the blocker's own hitpause pair (+0xE74/+0xE70) at block
+  entry, so the shake ticks immediately and the hittime is frozen until it ends: a block's
+  total hold is shake+hittime SEQUENTIALLY, not max. hitshakeover == +0x1090 <= 0
+  (0x48759A), hitover == +0x1094 < 0 (0x4875AC); GetHitVar(hittime)/(hitshaketime) read
+  the live +0x1094/+0x1090 (0x487868/0x48785D). The engine now counts stunTicks_ through
+  0 to -1 and reports the live clocks. The +/-1 contact-frame alignment remains unsettled
+  (GUARD-CHAIN-RE.md §1.5).
+FUNC 0x46eb80 hitapply_inline -> angr_p9_pair_writer.c (inline owner-record write 0x46F233-0x46F272: victim+0xC38/+0xC3C/+0xC40/+0xC44 <- hitdefBlock+0x90..0x9C, victim statetype=2, victim ctrl=0)
+FUNC 0x48bb50 statectx_apply -> angr_p9_statectx_apply.c (4-dword owner record copy + cmd-buffer clear; src/dst register-passed)
+FUNC 0x46af10 ChangeState -> (raw disasm only, 0x46AF10-0x46AF8C: prevstateno=stateno, stateno=new, time-in-state=0, owner via +0xC3C else +0xC34)
+FUNC 0x449bc0 round_pause -> angr_p9_round_pause.c (writes 0x11700/0x116FC = 500 then 200/100/50/25; clears owner pair at 0x44A608)
+FUNC 0x44b4c0 input_event_handler -> angr_p9_10ebc_writer_a.c (engine+0x10EBC <- byte 0x52B950 at 0x44B521; pause key toggle)
+FUNC 0x458bb0 pause_clear -> angr_p9_10ebc_writer_b.c (clears 0x10EBC and 0x52B950)
+FUNC 0x458d80 round_start_init -> angr_p9_eng_tick_b.c (zeroes 0x116F8..0x11708, 0x11710..0x1171C; clears 0x11700/0x116FC at 0x458DEC)
+FUNC 0x459a10 storyboard_playback -> angr_p9_10ebc_writer_c.c (storyboard loop; mirrors 0x52B950 into engine+0x10EBC)
+FUNC 0x4470d0 game_update -> angr_p9_game_update.c (0x11700 sawtooth accum at 0x447120-0x447147; the three palfx-scope call sites 0x4473C0/0x447497/0x4474E1)
+FUNC 0x4654d0 draw_or_frame_helper -> angr_p9_drawwrap.c (not palfx; kept for the pass-9 sweep)
+FUNC 0x413d50 renderstate_set_a -> angr_p9_renderstate_a.c (g_52B34C +0x4/+0x8/+0xC cache; dirty flag +0x48=1,+0x50=0)
+FUNC 0x413d80 renderstate_set_b -> angr_p9_renderstate_b.c (g_52B34C +0x10/+0x14/+0x18 cache; same dirty flag)
+# a6=1 branch of 0x472470 = AllPalFX only; a6=0 = BGPalFX {0x100,0,0,0,0} and player+0x1424..+0x1434;
+# per-layer match lives in 0x472020/0x472100/0x472200/0x4722d0 over engine+0x80C0 (stride 0x18, key at entry+0x4..+0x14)

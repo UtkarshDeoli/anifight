@@ -1,0 +1,221 @@
+; Anifight -- default fight screen: lifebars, power bars, portraits, timer.
+;
+; This is a standard MUGEN fight.def. The engine draws every piece of the fight
+; HUD from this file, which is why the "empty game" already looks like a real
+; fighting game before any character exists.
+
+[Info]
+name = "Anifight Default"
+author = "Anifight"
+localcoord = 320,240
+
+[Files]
+; Note the key is `sff` here, where system.def says `spr`. Same format, same
+; meaning, different name -- a genuine MUGEN quirk.
+sff = fight.sff
+snd = fight.snd
+font1 = f-6x9.fnt
+font2 = f-12x18.fnt
+fightfx.sff = fightfx.sff
+fightfx.air = fightfx.air
+common.snd = common.snd
+
+[FightFx]
+scale = 1
+
+; ------------------------------------------------------------------- lifebars
+
+[Lifebar]
+; p1.pos anchors the whole bar, and every other offset is relative to it. The
+; remaining life is kept against `pos` and drains toward the far end of range.x,
+; which is why pos sits at the inner (timer) end and range.x runs outward.
+;
+; The four layers are not decorative variants of each other; MUGEN gives each a
+; job. bg0 and bg1 are the backing and draw whole -- they are the empty channel
+; left behind. front is the bar, and is the layer that drains. mid is the pale
+; band of life between a character's current life and its "mid life", so with no
+; characters it never appears.
+p1.pos = 145,12
+p1.bg0.anim = 10
+p1.bg1.spr = 11,0
+p1.mid.spr = 12,0
+p1.front.spr = 13,0
+; range.x is start,end relative to pos. A negative end x means the bar reaches
+; leftward, which is how player 1's bar crosses the left half of the screen.
+p1.range.x = 0,-115
+
+p2.pos = 175,12
+p2.bg0.anim = 10
+p2.bg0.facing = -1
+p2.bg1.spr = 11,0
+p2.bg1.facing = -1
+p2.mid.spr = 12,0
+p2.mid.facing = -1
+p2.front.spr = 13,0
+p2.front.facing = -1
+p2.range.x = 0,115
+
+; ------------------------------------------------------------------ powerbars
+
+[Powerbar]
+; Clear of the lifebar above and of the name that sits beside it. Same layer
+; roles as the lifebar: bg0/bg1 backing, front the bar that drains.
+p1.pos = 145,34
+p1.bg0.anim = 40
+p1.bg1.spr = 41,0
+p1.mid.spr = 42,0
+p1.front.spr = 43,0
+p1.range.x = 0,-99
+p1.counter.offset = -105,7
+p1.counter.font = 1,0,1
+
+p2.pos = 175,34
+p2.bg0.anim = 40
+p2.bg0.facing = -1
+p2.bg1.spr = 41,0
+p2.bg1.facing = -1
+p2.mid.spr = 42,0
+p2.mid.facing = -1
+p2.front.spr = 43,0
+p2.front.facing = -1
+p2.range.x = 0,99
+p2.counter.offset = 105,7
+p2.counter.font = 1,0,-1
+
+level1.snd = 21,0
+level2.snd = 21,0
+level3.snd = 21,0
+
+; ------------------------------------------------------------------ portraits
+
+[Face]
+p1.pos = 18,12
+p1.bg.spr = 50,0
+; Group 9000 is read from the *character's* own sprite file, not this one.
+p1.face.spr = 9000,0
+p1.face.offset = 0,4
+p1.face.facing = 1
+
+p2.pos = 302,12
+p2.bg.spr = 50,0
+p2.bg.facing = -1
+p2.face.spr = 9000,0
+p2.face.offset = 0,4
+p2.face.facing = -1
+
+; ---------------------------------------------------------------------- names
+
+; Beside the portrait rather than over it: p1's name is set left so it grows
+; rightward from the portrait's edge, and p2's is set right so it grows leftward.
+[Name]
+p1.pos = 32,25
+p1.name.font = 1,0,-1
+p2.pos = 288,25
+p2.name.font = 1,0,1
+
+; ---------------------------------------------------------------------- timer
+
+[Time]
+pos = 160,18
+; Lifts the 18px-tall counter so it is centred on the 12px-tall lifebars.
+counter.offset = 0,-9
+counter.font = 2,0,0
+framespercount = 60
+
+; --------------------------------------------------------------- round banners
+
+[Round]
+match.wins = 2
+start.waittime = 30
+ctrl.time = 30
+
+round.time = 0
+round.default.offset = 160,100
+round.default.font = 2,0,0
+round.default.text = "ROUND %i"
+round.default.displaytime = 60
+
+fight.time = 0
+fight.offset = 160,110
+fight.font = 2,0,0
+fight.text = "FIGHT!"
+fight.displaytime = 45
+
+KO.time = 0
+KO.offset = 160,80
+KO.font = 2,0,0
+KO.text = "K.O."
+KO.displaytime = 45
+
+DKO.offset = 160,80
+DKO.font = 2,0,0
+DKO.text = "DOUBLE K.O."
+DKO.displaytime = 60
+
+TO.offset = 160,80
+TO.font = 2,0,0
+TO.text = "TIME OVER"
+TO.displaytime = 60
+
+slow.time = 60
+over.waittime = 45
+over.hittime = 10
+over.wintime = 45
+over.time = 210
+
+win.time = 60
+win.offset = 160,80
+win.font = 2,0,0
+win.text = "%s WINS"
+win.displaytime = 540
+
+draw.offset = 160,80
+draw.font = 2,0,0
+draw.text = "DRAW GAME"
+draw.displaytime = 540
+
+; ------------------------------------------------------------------- win icons
+
+[WinIcon]
+; Below the powerbar, so the round tokens never sit on top of the lifebars.
+p1.pos = 34,54
+p2.pos = 286,54
+p1.iconoffset = 13,0
+p2.iconoffset = -13,0
+p1.counter.offset = 0,0
+p1.counter.font = 1,0,0
+p2.counter.offset = 0,0
+p2.counter.font = 1,0,0
+
+; One icon per way of winning a round.
+p1.n.spr = 100,0
+p1.s.spr = 101,0
+p1.h.spr = 102,0
+p1.throw.spr = 103,0
+p1.c.spr = 104,0
+p1.t.spr = 105,0
+p1.suicide.spr = 106,0
+p1.teammate.spr = 107,0
+p1.perfect.spr = 110,0
+
+p2.n.spr = 100,0
+p2.s.spr = 101,0
+p2.h.spr = 102,0
+p2.throw.spr = 103,0
+p2.c.spr = 104,0
+p2.t.spr = 105,0
+p2.suicide.spr = 106,0
+p2.teammate.spr = 107,0
+p2.perfect.spr = 110,0
+
+useiconupto = 4
+
+; --------------------------------------------------------------- HUD animations
+
+; The lifebar backing is an animation rather than a plain sprite, which is how
+; MUGEN lets a screenpack animate any HUD piece. Here it is a still frame.
+[Begin Action 10]
+10,0, 0,0, -1
+
+[Begin Action 40]
+40,0, 0,0, -1
